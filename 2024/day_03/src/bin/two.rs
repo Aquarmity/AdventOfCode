@@ -10,7 +10,6 @@ fn main() {
     let mul_nums: Vec<(i32, i32)> = re
         .captures_iter(&input)
         .map(|caps| {
-            println!("{}", caps.get(0).unwrap().as_str());
             if caps.get(0).unwrap().as_str() == "do()" {
                 count = true;
                 (0, 0)
