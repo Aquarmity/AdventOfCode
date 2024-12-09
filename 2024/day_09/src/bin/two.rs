@@ -4,11 +4,9 @@ fn main() {
     let input: Vec<char> = include_str!("./input.txt").chars().collect();
     let mut sum: u64 = 0;
 
-    //let mut files: Vec<(u32, u32)> = vec![];
     let mut files: HashMap<u32, usize> = HashMap::new();
     let mut free_spaces: Vec<u32> = vec![];
     for i in (0..input.len()).step_by(2) {
-        //files.push((input[i].to_digit(10).unwrap(), (i / 2).try_into().unwrap()));
         files.insert((i / 2).try_into().unwrap(), input[i].to_digit(10).unwrap() as usize);
 
         if i + 1 < input.len() - 1 {
@@ -39,9 +37,7 @@ fn main() {
     }
 
     let mut cur_swap = len - 1;
-    //while file_system.contains(&u32::MAX) {
     while !files.is_empty() {
-        //let index: usize = file_system.iter().position(|x| *x == u32::MAX).unwrap();
         let mut cur_id = file_system[cur_swap];
         while cur_id == u32::MAX || !files.contains_key(&cur_id) {
             cur_swap -= 1;
@@ -66,7 +62,6 @@ fn main() {
                 }
                 break;
             }
-            //file_system[index] = file_system[cur_swap];
         }
         files.remove(&cur_id);
     }
